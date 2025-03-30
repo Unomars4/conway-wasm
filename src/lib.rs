@@ -21,11 +21,11 @@ pub struct Universe {
 }
 
 impl Universe {
-    pub fn get_index(&self, row: u32, column: u32) -> usize {
+    fn get_index(&self, row: u32, column: u32) -> usize {
         (row * self.width + column) as usize
     }
 
-    pub fn live_neighbour_count(&self, row: u32, column: u32) -> u8 {
+    fn live_neighbour_count(&self, row: u32, column: u32) -> u8 {
         let mut count = 0;
         for change_in_row in [self.height - 1, 0, 1].iter().cloned() {
             for change_in_col in [self.width - 1, 0, 1].iter().cloned() {
