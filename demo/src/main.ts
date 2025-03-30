@@ -1,4 +1,5 @@
 import "./style.css";
+import * as wasm from "conway-wasm";
 import { setupCounter } from "./counter.ts";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
