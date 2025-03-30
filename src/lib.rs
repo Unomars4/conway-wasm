@@ -4,10 +4,10 @@ use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 extern "C" {
-    fn alert(s: &str);
+    fn alert(s: String);
 }
 
 #[wasm_bindgen]
-pub fn greet() {
-    alert("Hello, conway-wasm!");
+pub fn greet(name: String) {
+    alert(format!("Hello 👋, {}", name));
 }
