@@ -1,12 +1,15 @@
 import "./style.css";
-import * as wasm from "conway-wasm";
-import { setupCounter } from "./counter.ts";
+import { setupAlert } from "./counter.ts";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
     <h1>Conways Game of Life</h1>
+    <div class="form">
+      <input type="text" placeholder="Enter your name 🚓">
+      <button id="alert-btn">Alert 🚨</button>
+    </div>
     <canvas/> 
   </div>
 `;
 
-setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
+setupAlert(document.querySelector<HTMLButtonElement>("#alert-btn")!);
