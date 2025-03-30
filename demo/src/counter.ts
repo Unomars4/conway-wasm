@@ -10,6 +10,10 @@ export function setupCounter(element: HTMLButtonElement) {
   setCounter(0);
 }
 
-export function setupAlert(element: HTMLButtonElement) {
-  element.addEventListener("click", () => wasm.greet());
+export function setupAlert(
+  buttonEl: HTMLButtonElement,
+  name: string | undefined,
+) {
+  const userName = name ?? "Jane Doe";
+  buttonEl.addEventListener("click", () => wasm.greet(userName));
 }
