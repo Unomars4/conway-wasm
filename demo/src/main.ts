@@ -7,7 +7,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <div class="form">
       <pre id="game-of-life-canvas"></pre> 
     </div>
-    <canvas/> 
   </div>
 `;
 
@@ -18,6 +17,7 @@ const universe = Universe.new();
 
 const loopy = () => {
   stringCanvas.textContent = universe.render();
+  console.log("universe:", universe.render());
   universe.tick();
 
   requestAnimationFrame(loopy);
