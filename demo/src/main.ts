@@ -1,4 +1,5 @@
 import "./style.css";
+import { Universe } from "conway-wasm";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
@@ -10,9 +11,16 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   </div>
 `;
 
-let value;
-const inputEl = document.querySelector<HTMLInputElement>("#input")!;
-inputEl.addEventListener("change", (e: Event) => {
-  const target = e.target as HTMLInputElement;
-  value = String(target.value);
-});
+const stringCanvas = document.querySelector<HTMLPreElement>(
+  "#game-of-life-canvas",
+)!;
+const universe = Universe.new();
+
+const loopy = () => {
+  stringCanvas.textContent = universe.render();
+  universe.tick();
+
+  requestAnimationFrame(loopy);
+};
+
+requestAnimationFrame(loopy);
