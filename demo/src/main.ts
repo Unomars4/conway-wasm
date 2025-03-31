@@ -6,6 +6,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
     <h1>Conways Game of Life</h1>
     <div class="form">
+      <button id="play-pause"></button>
       <canvas id="game-of-life-canvas"></canvas> 
     </div>
   </div>
