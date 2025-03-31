@@ -9,7 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "conway-wasm": "file:../pkg"
+    "conway-wasm": "file:../pkg",
+    "conway-wasm/conway_wasm_bg": "file:../pkg/conway_wasm.js"
   },
   "devDependencies": {
     "typescript": "~5.7.2",
