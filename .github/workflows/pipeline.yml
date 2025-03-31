@@ -6,19 +6,28 @@ on:
       - master
 
 jobs:
-  deployment_pipeline:
-    runs-on: ubuntu-20.04
+  build_be:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    - run: rustup update
+    - name: Install wasm-pack
+      run: cargo install wasm-pack
+    - name: Test wasm package
+      run: wasm-pack test
+    - name: Build wasm code into package
+      run: wasm-pack build
+  deploy_fe:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: "22.12.0"
-      - name: Check current location
-        run: ls -a
       - name: Change to demo dir
-        run: cd demo/
-      - name: Check current location
-        run: ls -a
+        run:
+          working-directory: {demo}
       - name: Install dependencies
         run: npm install
       - name: Build for prod
