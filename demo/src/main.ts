@@ -1,6 +1,6 @@
 import "./style.css";
-import { memory } from "conway-wasm/conway_wasm_bg";
 import { Cell, Universe } from "conway-wasm";
+import { memory } from "conway-wasm/conway_wasm_bg.wasm";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
@@ -12,9 +12,9 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 `;
 
 const CELL_SIZE = 5,
-  GRID_COLOR = "#fffff",
-  DEAD_COLOR = "#fffff",
-  ALIVE_COLOR = "#242424";
+  GRID_COLOR = "rgba(255, 255, 255, 0.87)",
+  DEAD_COLOR = "#242424",
+  ALIVE_COLOR = "rgba(255, 255, 255, 0.87)";
 
 const universe = Universe.new(),
   width = universe.width(),
