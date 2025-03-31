@@ -1,6 +1,15 @@
 import "./style.css";
-import { Cell, Universe } from "conway-wasm";
+import { Cell } from "conway-wasm";
 import { memory } from "conway-wasm/conway_wasm_bg.wasm";
+import {
+  universe,
+  CELL_SIZE,
+  GRID_COLOR,
+  DEAD_COLOR,
+  ALIVE_COLOR,
+  width,
+  height,
+} from "./constants";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
@@ -13,14 +22,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 `;
 
 let animationId: null | number = null;
-const CELL_SIZE = 5,
-  GRID_COLOR = "rgba(255, 255, 255, 0.87)",
-  DEAD_COLOR = "#242424",
-  ALIVE_COLOR = "rgba(255, 255, 255, 0.87)";
-
-const universe = Universe.new(),
-  width = universe.width(),
-  height = universe.height();
 
 const playPauseBtn = document.querySelector<HTMLButtonElement>("#play-pause")!;
 playPauseBtn.addEventListener("click", () => {
