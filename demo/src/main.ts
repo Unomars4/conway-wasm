@@ -85,4 +85,6 @@ const loopy = () => {
   requestAnimationFrame(loopy);
 };
 
+drawGrid();
+drawCells();
 requestAnimationFrame(loopy);
