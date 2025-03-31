@@ -25,12 +25,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "22.12.0"
-      - name: Change to demo dir
-        run:
-          working-directory: ./demo
       - name: Install dependencies
+        working-directory: ./demo
         run: npm install
       - name: Build for prod
+        working-directory: ./demo
         run: npm run predeploy 
       - name: Deploy dist dir
+        working-directory: ./demo
         run: npm run deploy
