@@ -44,7 +44,7 @@ canvas.addEventListener("click", (event: MouseEvent) => {
   const scaleY = canvas.height / boundingRect.height;
 
   const canvasLeft = (event.clientX - boundingRect.left) * scaleX;
-  const canvasTop = (event.clientY - boundingRect.right) * scaleY;
+  const canvasTop = (event.clientY - boundingRect.top) * scaleY;
 
   const row = Math.min(Math.floor(canvasTop / (CELL_SIZE + 1)), height - 1);
   const col = Math.min(Math.floor(canvasLeft / (CELL_SIZE + 1)), width - 1);
