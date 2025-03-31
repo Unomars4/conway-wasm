@@ -17,6 +17,8 @@ jobs:
         run: ls -a
       - name: Change to demo dir
         run: cd demo/
+      - name: Check current location
+        run: ls -a
       - name: Install dependencies
         run: npm install
       - name: Build for prod
