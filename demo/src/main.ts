@@ -1,5 +1,6 @@
 import "./style.css";
-import { Universe } from "conway-wasm";
+import { memory } from "conway-wasm/conway_wasm_bg";
+import { Cell, Universe } from "conway-wasm";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
@@ -48,10 +49,38 @@ const drawGrid = () => {
   }
 };
 
+const getIndex = (row: number, column: number): number => {
+  return row * width + column;
+};
+
+const drawCells = () => {
+  if (ctx) {
+    const cellsPtr = universe.cells();
+    const cells = new Uint8Array(memory.buffer, cellsPtr, width * height);
+
+    ctx.beginPath();
+    for (let row = 0; row < height; row++) {
+      for (let col = 0; col < width; col++) {
+        const idx = getIndex(row, col);
+
+        ctx.fillStyle = cells[idx] === Cell.Dead ? DEAD_COLOR : ALIVE_COLOR;
+        ctx.fillRect(
+          col * (CELL_SIZE + 1) + 1,
+          row * (CELL_SIZE + 1) + 1,
+          CELL_SIZE,
+          CELL_SIZE,
+        );
+      }
+    }
+    ctx.stroke();
+  }
+};
+
 const loopy = () => {
   universe.tick();
 
   drawGrid();
+  drawCells();
 
   requestAnimationFrame(loopy);
 };
