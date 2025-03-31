@@ -19,9 +19,13 @@ const universe = Universe.new(),
   width = universe.width(),
   height = universe.height();
 
-const Canvas = document.querySelector<HTMLCanvasElement>(
+const canvas = document.querySelector<HTMLCanvasElement>(
   "#game-of-life-canvas",
 )!;
+canvas.height = (CELL_SIZE + 1) * height + 1;
+canvas.width = (CELL_SIZE + 1) * width + 1;
+
+const ctx = canvas.getContext("2d");
 
 const loopy = () => {
   universe.tick();
