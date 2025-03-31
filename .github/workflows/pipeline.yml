@@ -27,7 +27,7 @@ jobs:
           node-version: "22.12.0"
       - name: Change to demo dir
         run:
-          working-directory: demo
+          working-directory: ./demo
       - name: Install dependencies
         run: npm install
       - name: Build for prod
