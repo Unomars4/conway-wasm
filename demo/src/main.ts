@@ -10,14 +10,20 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   </div>
 `;
 
-const stringCanvas = document.querySelector<HTMLPreElement>(
+const CELL_SIZE = 5,
+  GRID_COLOR = "#fffff",
+  DEAD_COLOR = "#fffff",
+  ALIVE_COLOR = "#242424";
+
+const universe = Universe.new(),
+  width = universe.width(),
+  height = universe.height();
+
+const Canvas = document.querySelector<HTMLCanvasElement>(
   "#game-of-life-canvas",
 )!;
-const universe = Universe.new();
 
 const loopy = () => {
-  stringCanvas.textContent = universe.render();
-  console.log("universe:", universe.render());
   universe.tick();
 
   requestAnimationFrame(loopy);
