@@ -43,6 +43,15 @@ h1 {
   text-align: center;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+#play-pause {
+  width: 100px;
+}
+
 button,
 input {
   border-radius: 8px;

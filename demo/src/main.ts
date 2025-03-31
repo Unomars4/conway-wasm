@@ -5,7 +5,7 @@ import { memory } from "conway-wasm/conway_wasm_bg.wasm";
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
     <h1>Conways Game of Life</h1>
-    <div class="form">
+    <div class="main">
       <button id="play-pause"></button>
       <canvas id="game-of-life-canvas"></canvas> 
     </div>
