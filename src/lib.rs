@@ -16,6 +16,16 @@ pub enum Cell {
 }
 
 #[wasm_bindgen]
+impl Cell {
+    pub fn toggle(&mut self) {
+        *self = match *self {
+            Cell::Alive => Cell::Dead,
+            Cell::Dead => Cell::Alive,
+        };
+    }
+}
+
+#[wasm_bindgen]
 pub struct Universe {
     width: u32,
     height: u32,
