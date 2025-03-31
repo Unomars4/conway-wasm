@@ -44,6 +44,10 @@ impl Universe {
         }
     }
 
+    pub fn render(&self) -> String {
+        self.to_string()
+    }
+
     pub fn tick(&mut self) {
         let mut next = self.cells.clone();
 
