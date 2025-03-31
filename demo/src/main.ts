@@ -12,6 +12,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   </div>
 `;
 
+let animationId: null | number = null;
 const CELL_SIZE = 5,
   GRID_COLOR = "rgba(255, 255, 255, 0.87)",
   DEAD_COLOR = "#242424",
@@ -21,6 +22,15 @@ const universe = Universe.new(),
   width = universe.width(),
   height = universe.height();
 
+const playPauseBtn = document.querySelector<HTMLButtonElement>("#play-pause")!;
+playPauseBtn.addEventListener("click", () => {
+  if (isPaused()) {
+    play();
+  } else {
+    pause();
+  }
+});
+
 const canvas = document.querySelector<HTMLCanvasElement>(
   "#game-of-life-canvas",
 )!;
@@ -28,6 +38,19 @@ canvas.height = (CELL_SIZE + 1) * height + 1;
 canvas.width = (CELL_SIZE + 1) * width + 1;
 
 const ctx = canvas.getContext("2d");
+
+const play = () => {
+  playPauseBtn.textContent = "⏸";
+  loopy();
+};
+
+const pause = () => {
+  playPauseBtn.textContent = "▶";
+  if (animationId) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+  }
+};
 
 const drawGrid = () => {
   if (ctx) {
@@ -52,6 +75,10 @@ const drawGrid = () => {
 
 const getIndex = (row: number, column: number): number => {
   return row * width + column;
+};
+
+const isPaused = (): boolean => {
+  return animationId == null;
 };
 
 const drawCells = () => {
@@ -83,9 +110,9 @@ const loopy = () => {
   drawGrid();
   drawCells();
 
-  requestAnimationFrame(loopy);
+  animationId = requestAnimationFrame(loopy);
 };
 
 drawGrid();
 drawCells();
-requestAnimationFrame(loopy);
+play();
