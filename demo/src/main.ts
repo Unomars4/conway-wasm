@@ -27,8 +27,31 @@ canvas.width = (CELL_SIZE + 1) * width + 1;
 
 const ctx = canvas.getContext("2d");
 
+const drawGrid = () => {
+  if (ctx) {
+    ctx.beginPath();
+    ctx.strokeStyle = GRID_COLOR;
+
+    //Set Vertical lines
+    for (let i = 0; i <= width; i++) {
+      ctx.moveTo(i * (CELL_SIZE + 1) + 1, 0);
+      ctx.lineTo(i * (CELL_SIZE + 1) + 1, (CELL_SIZE + 1) * height + 1);
+    }
+
+    //Set Horizontal lines
+    for (let j = 0; j <= height; j++) {
+      ctx.moveTo(0, j * (CELL_SIZE + 1) + 1);
+      ctx.lineTo((CELL_SIZE + 1) * width + 1, j * (CELL_SIZE + 1) + 1);
+    }
+
+    ctx.stroke();
+  }
+};
+
 const loopy = () => {
   universe.tick();
+
+  drawGrid();
 
   requestAnimationFrame(loopy);
 };
