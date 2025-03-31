@@ -15,7 +15,6 @@ pub enum Cell {
     Alive = 1,
 }
 
-#[wasm_bindgen]
 impl Cell {
     pub fn toggle(&mut self) {
         *self = match *self {
