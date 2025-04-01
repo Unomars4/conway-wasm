@@ -25,10 +25,6 @@ jobs:
     - name: Build for prod
       working-directory: ./demo
       run: npm run predeploy
-  deploy:
-    needs: test_build 
-    runs-on: ubuntu-latest
-    steps:
     - name: Checkout Code
       uses: actions/checkout@v4
     - name: Setup Pages
