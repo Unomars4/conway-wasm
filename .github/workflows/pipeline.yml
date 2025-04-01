@@ -27,10 +27,10 @@ jobs:
       run: npm run predeploy
     - name: Setup Pages
       if: github.ref == 'refs/heads/master'
-      uses: actions/configure-pages@v3
+      uses: actions/configure-pages@v4
     - name: Upload Artifact
       if: github.ref == 'refs/heads/master'
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v4
       with:
         # location of the coverage artifacts
         name: site
