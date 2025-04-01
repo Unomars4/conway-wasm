@@ -52,6 +52,8 @@ jobs:
         with:
           name: github-pages 
           path: .
+      - name: Check dir
+        run: ls -a
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4.0.5
