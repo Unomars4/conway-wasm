@@ -1,4 +1,4 @@
-![Demo](https://github.com/Unomars4/conway-wasm/blob/master/resources/conway-wasm.gif)
+![Demo](https://github.com/Unomars4/conway-wasm/blob/master/resources/conway_wasm.gif)
 
 ## About
 Using rust wasm to make a playable Conways Game of Life. 🤔
