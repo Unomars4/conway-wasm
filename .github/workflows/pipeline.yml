@@ -35,7 +35,9 @@ jobs:
       uses: actions/upload-pages-artifact@v1
       with:
         # location of the coverage artifacts
+        name: site
         path: "./demo/dist"
+        if-no-files-found: error
   deploy-coverage:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -48,6 +50,10 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: site 
+          path: .
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
