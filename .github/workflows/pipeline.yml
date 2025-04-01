@@ -45,7 +45,7 @@ jobs:
       id-token: write
     environment:
       # environment created automatically by GitHub
-      name: github-pages
+      name: site
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/download-artifact@4.2.1
