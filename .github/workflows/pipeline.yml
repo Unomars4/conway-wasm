@@ -31,7 +31,7 @@ jobs:
       if: github.ref == 'refs/heads/master'
       uses: actions/configure-pages@v3
     - name: Show me dir
-      run: ls -a
+      run: ls ./demo -a
     - name: Upload Artifact
       if: github.ref == 'refs/heads/master'
       uses: actions/upload-pages-artifact@v3
